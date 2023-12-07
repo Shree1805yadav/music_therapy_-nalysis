@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Paper</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+    <script src="https://kit.fontawesome.com/f1045cddcf.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap" rel="stylesheet" />
+</head>
+<style>
+    .table1 {
+        width: 100%;
+    }
+    
+    .table1 td,
+    .table1 th {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .table1 th {
+        color: #ffffff;
+        background-color: #2ddc76;
+    }
+    
+    .table1 tbody tr:nth-child(even) {
+        background-color: #8080806b;
+    }
+    .navbar {
+        background: rgb(0, 0, 0, 0.7) url('/static/images/music3.jpg') !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-blend-mode: darken !important;
+    }
+    @media(max-width: 700px) {
+        .table1 thead {
+            display: none;
+        }
+        .table-container {
+            padding-left: 43px;
+        }
+        .table1,
+        .table1 tbody,
+        .table1 tr,
+        .table1 td {
+            display: block;
+            width: 100%;
+            margin-right: 12px;
+        }
+        .table1 tr {
+            margin-bottom: 15px;
+        }
+        .table1 td {
+            text-align: right;
+            padding-left: 50%;
+            text-align: right;
+            position: relative;
+        }
+        .table1 td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 15px;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+        }
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AJM Technology</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                </ul>
+                {% if user.is_authenticated %}
+                <div class="d-flex">
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/form">Check Music</a>
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/logout">Logout</a>
+                </div>
+                {% else %}
+                <div class="d-flex">
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/signup">Register</a>
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/login">Login</a>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+    <br />
+    <br />
+
+    <div>
+        <h1 class="text-center my-2">Case Paper No: {{length}}</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-3 mx-5 ">
+
+                <h4>Name: {{request.user}}</h4>
+
+            </div>
+            <div class="col-md-3 mx-4">
+
+                <h4>Age: {{age}}</h4>
+
+            </div>
+            <div class="col-md-3 mx-5">
+
+                <h4>Gender: {{gender}}</h4>
+            </div>
+        </div>
+        <br>
+
+        <div class="row d-flex justify-content-start mx-3">
+            <div class="col-md-3 mx-3">
+                <h4>Mobile No: {{mobileno}}</h4>
+            </div>
+            <br>
+            <div class=" col-md-3 mx-5">
+                <h4>Mail Id: {{mailid}}</h4>
+            </div>
+        </div>
+
+
+        <br>
+
+
+        <div class=" d-flex justify-content-center mx-4">
+            <h4 class="text-center">Problems: <br/> {% for item in problems %} {{item|safe}}, {% endfor %}
+            </h4>
+
+
+        </div>
+        <br>
+        <div class=" d-flex justify-content-center mx-4">
+            <h4 class="text-center">Symptoms: <br/> {% for item in symptoms%} {{item}}, {% endfor %}
+            </h4>
+            <br/>
+
+            <!-- <h6 class="text-center">{{symptoms}}</h6> -->
+
+        </div>
+        <br>
+        <div class="d-flex justify-content-center mx-4">
+            <h4 class="text-center">Solution: 
+           
+                {% for item in solution %}
+                <ul>
+                    <li class="text-center d-flex justify-content-start ">{{item}} 
+                        <br/>
+                    </li>
+                </ul>
+           
+                {% endfor  %}<br/>
+                {% comment %} <table class="table1 table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Raag</th>
+                            <th scope="col"> Vadi/Sanwad</th>
+                            <th scope="col">Thaat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+                {% for item in  solution%} 
+               <tr>
+                   <td>{{item}}
+                   </td>
+               </tr/>
+                {% endfor %} </h4> 
+                <br/>
+                    </tbody>
+                </table> {% endcomment %}
+
+        </div>
+        <br/>
+        <br/>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-primary mx-2" onclick="window.print()">Print</button>
+            <a href="/table?page=1" class="btn btn-primary">Recommendations</a>
+        </div>
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+
+
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJM Technology</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/f1045cddcf.js" crossorigin="anonymous"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap" rel="stylesheet" />
+<style>
+    .table1 {
+        width: 100%;
+    }
+    
+    .table1 td,
+    .table1 th {
+        border: 1px solid #ddd;
+        padding: 12px 15px;
+        text-align: center;
+        font-size: 16px;
+    }
+    
+    .table1 th {
+        color: black;
+    }
+    
+    .table1 tbody tr:nth-child(even) {
+        background-color: #f5f5f5;
+    }
+    
+    .navbar {
+        background: rgb(0, 0, 0, 0.7) url('/static/images/music3.jpg') !important;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-blend-mode: darken !important;
+    }
+    
+    .btn {
+        background-color: #2ddc76;
+    }
+    
+    .music {
+        width: 100%;
+    }
+    /*responsive*/
+    
+    @media(max-width: 700px) {
+        .table1 thead {
+            display: none;
+        }
+        .table-container {
+            padding-left: 43px;
+        }
+        .table1,
+        .table1 tbody,
+        .table1 tr,
+        .table1 td {
+            display: block;
+            width: 100%;
+            margin-right: 12px;
+        }
+        .table1 tr {
+            margin-bottom: 15px;
+        }
+        .table1 td {
+            text-align: right;
+            padding-left: 50%;
+            text-align: right;
+            position: relative;
+        }
+        .table1 td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 50%;
+            padding-left: 15px;
+            font-size: 15px;
+            font-weight: bold;
+            text-align: left;
+        }
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AJM Technology</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                </ul>
+                {% if user.is_authenticated %}
+                <div class="d-flex">
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/form">Check Music</a>
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/logout">Logout</a>
+                </div>
+                {% else %}
+                <div class="d-flex">
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/signup">Register</a>
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/login">Login</a>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+    <br/>
+    <br/>
+    <br/>
+    <div class="container d-flex justify-content-center mt-5">
+        <table class="table1 table-hover">
+            <thead class="table-success">
+                <tr>
+                    <th scope="col">Swar</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Music</th>
+                    <th scope="col">Play</th>
+                    <th scope="col">Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in content %}
+                <tr>
+                    <td scope="row" data-label="Raag">{{i.raag}}</td>
+                    <td data-label="Before">{{i.type}}</td>
+                    <td data-label="Before">
+                        {{i.music}}
+                    </td>
+                    <td data-label="Audio"> 
+                        <audio controls>
+                        <source src="/static/music/{{i.music_path}}.mp3" type="audio/mpeg">
+                        Your browser does not support the audio tag.
+                      </audio> 
+                    </td>
+                    <td data-label="Review"><a href="/review/{{i.music_id}}"><button class="btn btn-lg">Review</button></a></td>
+                </tr>
+
+                {% endfor %}
+
+
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <nav aria-label="Page navigation example mt-5">
+        <ul class="pagination  justify-content-center">
+            {% if content.has_previous %}
+
+            <li class="page-item">
+                <a class="page-link" href="?page={{ content.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">Previous</span>
+                </a>
+            </li>
+            {% endif %} {% if content.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{content.previous_page_number}}">
+                {{content.previous_page_number}}</a></li>
+            {% endif %}
+            <li class="page-item active"><a class="page-link" href="?page={{content.number}}">{{content.number}}</a></li>
+            {% if content.has_next %}
+            <li class="page-item "><a class="page-link" href="?page={{ content.next_page_number }}">{{content.next_page_number}}</a></li>
+            {% endif %}
+
+            {% if content.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ content.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ content.paginator.num_pages }}" aria-label="Last">
+                    <span aria-hidden="true">Last</span>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    <!-- <div class="pagination">
+        <span class="step-links">
+           
+                <a href="?page=1">&laquo; first</a>
+                <a >previous</a>
+           
+    
+            <span class="current">
+                Page {{ content.number }} of {{ content.paginator.num_pages }}.
+            </span>
+
+
+        <a>next</a>
+        <a>last &raquo;</a>
+
+        </span>
+    </div> -->
+</body>
+
+</html>

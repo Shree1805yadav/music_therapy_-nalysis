@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+
+    <script src="https://kit.fontawesome.com/f1045cddcf.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        
+        .card {
+            margin-bottom: 20px;
+            border: none
+        }
+        
+        .box {
+            padding: 40px;
+            display: inline-block;
+            align-items: center;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background: #1c1c1c;
+            text-align: center;
+            transition: 0.25s;
+            margin-top: 60px;
+            width: 60%;
+            height: max-content;
+            border-radius: 20px;
+        }
+        
+        .box input[type="email"],
+        .box input[type="number"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 10px 10px;
+            width: 250px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            width: 100%;
+        }
+        
+        .box input[type="text"]:focus,
+        .box input[type="password"]:focus {
+            width: 300px;
+            color: white;
+            border-color: #2ecc71
+        }
+        
+        .box input[type="submit"] {
+            border: 0;
+            background: none;
+            display: inline-block;
+            position: relative;
+            /* top: 100vh; */
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid white;
+            background-color: #2ecc71;
+            padding: 14px 40px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer
+        }
+        
+        .box input[type="submit"]:hover {
+            background: #2ecc71
+        }
+        
+        .forgot {
+            text-decoration: underline
+        }
+        
+        .accordian {
+            background: #1c1c1c;
+            width: 60%;
+            height: max-content;
+            border-radius: 20px;
+            overflow: hidden;
+            display: block;
+            margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .accordian .card {
+            box-shadow: 0px 0px 20px #1c1c1c1c;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .accordian .card .card-header h3 {
+            cursor: pointer;
+            color: white;
+            position: relative;
+            background-color: #1c1c1c;
+            margin: 0;
+            padding: 15px 20px;
+        }
+        
+        .accordian .card .card-header {
+            position: relative;
+        }
+        
+        .accordian .card .card-header span {
+            position: absolute;
+            right: 20px;
+            top: 12px;
+            height: 25px;
+            width: 25px;
+            color: white;
+            background-color: #1c1c1c;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-size: 13px;
+        }
+        
+        .accordian .card .card-body {
+            padding: 20px;
+        }
+        
+        .accordian .card .card-body {
+            display: none;
+        }
+        /*open one card by default*/
+        
+        .accordian .card:nth-child(1) .card-body {
+            display: block;
+        }
+        
+        .accordian .card .card-body p {
+            font-size: 15px;
+            line-height: 24px;
+            color: #444444;
+            margin: 0px;
+        }
+        
+        p span {
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        p label {
+            margin-left: 12px;
+            margin-top: -4px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">AJM Technology</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                </ul>
+                {% if user.is_authenticated %}
+                <div class="d-flex">
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/form">Check Music</a>
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/logout">Logout</a>
+                </div>
+                {% else %}
+                <div class="d-flex">
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/signup">Register</a>
+                    <a class="nav-link" aria-current="page" style="color: white;" href="/login">Login</a>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </nav>
+    <h1 class="text-center my-3">Welcome {{request.user}}</h1>
+    <div class="container">
+        <div class="row">
+            <div>
+                <div class="card">
+                    <form action="/table?page=1" method="post" class="box">
+                        {% csrf_token %} {% if messages %} {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                            <strong style="color:green ">Message:</strong>
+                            <p style="color:green;"> {{message}} </p>
+                            <button style="background-color: whitesmoke;" type="button" class="btn-close btn-light" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %} {% endif %}
+                        <label class="text-white" for="Age">Age:</label>
+                        <input type="number" name="age" id="" placeholder="Enter Your Age" value={{age}} required>
+                        <p class="text-white">Gender:</p>
+                        {% if gender == "Male" %}
+                        <input type="radio" id="male" name="gender" value="Male" checked="Male" style="  color: white;;">
+                        <label for="Male" style="  color: white;">Male</label>
+                        <input type="radio" id="female" name="gender" value="Female" style="  color: white;;display: inline-block;position: relative;left: 2px;">
+                        <label for="female" style="  color: white;;">Female</label> {% elif gender == "Female" %}
+                        <input type="radio" id="male" name="gender" value="Male" style="  color: white;;">
+                        <label for="Male" style="  color: white;;">Male</label>
+                        <input type="radio" id="female" name="gender" value="Female" checked="Female" style="color: rgb(255, 247, 247);display: inline-block;position: relative;left: 2px;">
+                        <label for="female" style="  color: white;;">Female</label> {% else %}
+                        <input type="radio" id="male" name="gender" value="Male" style="color: white;">
+                        <label for="Male" style="color: white;">Male</label>
+                        <input type="radio" id="female" name="gender" value="Female" style="color: white;display: inline-block;position: relative;left: 2px;">
+                        <label for="female" style="color: white;">Female</label> {% endif %}<br/>
+                        <label class="mt-3 text-white" for="MobileNo">Mobile No:</label>
+                        <input type="number" name="mobileno" id="" placeholder="Enter Your Mobile No" value={{mobileno}} required>
+                        <label class=" text-white" for="MailId">Mail Id:</label>
+                        <input type="email" name="mailid" id="" placeholder="Enter Your Mail Id" value={{mailid}}>
+
+                        <p style="color: white;">Problems:</p>
+
+                        <div class="row">
+                            <div class="accordian">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3> Diabetes </h3>
+                                        <span class="fa fa-minus" onclick="Diabetes()"></span>
+                                    </div>
+                                    <div class="card-body active">
+                                        <input type="checkbox" size="24px" id="diab" class="diabetesinput" name="problems" style="font-size: 24px;" value="DIABETES" onclick="Diabetes()">
+                                        <label for="Diabetes" class="diabetes" style="color: black; font-size: 24px;"> Do you have Diabetes? </label>
+                                        <p id="ds" class="diabetes" style="display:none; color: black;"><br/> Symptoms: <br>
+                                            <span>  <input type="checkbox" id="diabetes" name="symptoms" value="Having a blurry vision?">
+                                            <label for="Diabetes"> Having a blurry vision?</label></span>
+                                            <br/>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="Going through dry skin problems?">
+                                                <label for="Diabetes"> Going through dry skin problems?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="Often feel hungerness?">
+                                                <label for="Diabetes"> Often feel hungerness?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="Having a fruity breath?">
+                                                <label for="Diabetes"> Having a fruity breath?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="DO you have frequent urination?">
+                                                <label for="Diabetes"> DO you have frequent urination?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                            <input type="checkbox" id="diabetes" name="symptoms" value="Are you always feeling thirsty?">
+                                            <label for="Diabetes"> Are you always feeling thirsty?</label>
+                                         </span>
+                                            <br>
+                                            <span><input type="checkbox" id="diabetes" name="symptoms" value="Often feeling body pain?">
+                                            <label for="Diabetes"> Often feeling body pain?</label>
+                                        </span>
+                                            <br>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="Does your cuts heal slowly?">
+                                                <label for="Diabetes"> Does your cuts heal slowly?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                            <input type="checkbox" id="diabetes" name="symptoms" value="Likely to have a low blood sugar?">
+                                            <label for="Diabetes"> Likely to have a low blood sugar?</label>
+                                          </span>
+                                            <br>
+                                            <span>
+                                            <input type="checkbox" id="diabetes" name="symptoms" value="Ever had high blood sugar level?">
+                                            <label for="Diabetes"> Ever had high blood sugar level?</label>
+                                          </span>
+                                            <br>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="Are you often taking the pills of diabeties?">
+                                            <label for="Diabetes"> Are you often taking the pills of diabeties?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                                <input type="checkbox" id="diabetes" name="symptoms" value="Do you insulins?">
+                                                <label for="Diabetes"> Do you insulins?</label>
+                                            </span>
+                                            <br>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Thyroid </h3>
+                                        <span class="fa fa-plus"></span>
+                                    </div>
+                                    <div class="card-body">
+                                        <input type="checkbox" id="thy" name="problems" value="THYROID" onclick="Thyroid()">
+                                        <label for="Thyroid" style="color: black; font-size: 24px;  "> Do you have Thyroid?</label>
+                                        <p id="ts" style="display:none; color: black;">
+                                            Symptoms <br>
+                                            <span>
+                                                <input type="checkbox" id="thyroid" name="symptoms" value="Having Weakness?">
+                                                <label for="Weakness"> Having Weakness?</label>
+                                            </span>
+                                            <br>
+                                            <span>
+                                            <input type="checkbox" id="thyroid" name="symptoms" value="Are you eventualy irritated?">
+                                            <label for="Irritiability"> Are you eventualy irritated?</label>
+                                           </span><br>
+                                            <span>
+                                            <input type="checkbox" id="thyroid" name="symptoms" value="Had any problem of itchiness">
+                                            <label for="Change In Weight"> Had any problem of itchiness</label>
+                                           </span><br>
+                                            <span>
+                                                <input type="checkbox" id="thyroid" name="symptoms" value="Going through a memory problem?">
+                                            <label for="Itching"> Going through a memory problem?</label>
+                                            </span><br>
+                                            <span>
+                                            <input type="checkbox" id="thyroid" name="symptoms" value="Often having a trouble to sleep?">
+                                            <label for="Memory Problem"> Often having a trouble to sleep?</label>
+                                           </span><br>
+                                            <span>
+                                            <input type="checkbox" id="thyroid" name="symptoms" value="Do you have experienced any anxiety?">
+                                            <label for="Trouble Sleeping"> Do you have experienced any anxiety?</label>
+                                           </span><br>
+                                            <span>
+                                                <input type="checkbox" id="thyroid" name="symptoms" value="Do you have any enlarged thyroid gland?">
+                                            <label for="Experiencing Anxiety"> Do you have any enlarged thyroid gland?</label>
+                                            </span><br>
+                                            <span>
+                                            <input type="checkbox" id="thyroid" name="symptoms" value="Having an irregular periods?">
+                                            <label for="Having an enlarged Thyroid gland"> Having an irregular periods?</label>
+                                           </span><br>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>HyperTension </h3>
+                                        <span class="fa fa-plus"></span>
+                                    </div>
+                                    <div class="card-body">
+                                        <input type="checkbox" id="hyper" class="hypertensioninput" name="problems" value="HYPERTENSION" onclick="Hypertension()">
+                                        <label for="Hypertension" class="hypertension" style="color: black; font-size: 24px;">
+                                            Do you have Hypertension?</label>
+                                        <p id="hs" class="" style="display:none; color:black;">
+                                            Symptoms <br>
+                                            <span>
+                                            <input type="checkbox" id="hypertension" name="symptoms" value="Sometimes having severe headache?">
+                                            <label for="Severe headaches"> Sometimes having severe headache?</label>
+                                           </span><br>
+                                            <span></span><br>
+                                            <span>
+                                            <input type="checkbox" id="hypertension" name="symptoms" value="Haing Fatique or Confusion">
+                                            <label for="Fatique or Confusion"> Haing Fatique or Confusion</label>
+                                           </span><br>
+                                            <span>
+                                            <input type="checkbox" id="hypertension" name="symptoms" value="Having blurry vision or eyesight problem">
+                                            <label for="Vision Problem">Having blurry vision or eyesight problem</label>
+                                           </span><br>
+                                            <span>
+                                            <input type="checkbox" id="hypertension" name="symptoms" value="Often having a pain in chest">
+                                            <label for="Chest Pain"> Often having a pain in chest</label>
+                                           </span><br>
+                                            <span>
+                                                <input type="checkbox" id="hypertension" name="symptoms" value="Have you ever had Difficulty iin breathing?">
+                                            <label for="Difficulty Breathing"> Have you ever had Difficulty iin breathing?</label>
+                                            </span><br>
+                                            <span>
+                                            <input type="checkbox" id="hypertension" name="symptoms" value="Ever had Irregular Heartbeats">
+                                            <label for="Irregular Heartbeats"> Ever had Irregular Heartbeats</label>
+                                           </span><br>
+                                            <span>
+                                                <input type="checkbox" id="hypertension" name="symptoms" value="Often Sweating?">
+                                            <label for="Sweating"> Often Sweating?</label>
+                                            </span><br>
+                                            <span>
+                                                <input type="checkbox" id="hypertension" name="symptoms" value="Ever had bad odor">
+                                            <label for="Trouble Sleeping"> Ever had bad odor</label>
+                                            </span><br>
+                                            <span>
+                                                <input type="checkbox" id="hypertension" name="symptoms" value="Might be having trouble in sleeping?">
+                                            <label for="Trouble Sleeping"> Might be having trouble in sleeping?</label>
+                                           </span><br>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <input type="submit" value="Submit">
+                            </div>
+
+
+                            <!-- jqurey code -->
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        function Diabetes() {
+            // Get the checkbox
+            var checkBox = document.getElementById("diab");
+            // Get the output text
+            var text = document.getElementById("ds");
+
+            var thy = document.getElementById('thy');
+            var ts = document.getElementById('ts')
+
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked == true) {
+                text.style.display = "flex";
+                text.style.flexDirection = "column";
+            } else {
+                text.style.display = "none";
+            }
+        }
+
+        function Thyroid() {
+            // Get the checkbox
+            var checkBox = document.getElementById("thy");
+            // Get the output text
+            var text = document.getElementById("ts");
+
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked == true) {
+                text.style.display = "flex";
+                text.style.flexDirection = "column";
+            } else {
+                text.style.display = "none";
+            }
+        }
+
+        function Hypertension() {
+            // Get the checkbox
+            var checkBox = document.getElementById("hyper");
+            // Get the output text
+            var text = document.getElementById("hs");
+
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked == true) {
+                text.style.display = "flex";
+                text.style.flexDirection = "column";
+            } else {
+                text.style.display = "none";
+            }
+        }
+
+        $(document).ready(function() {
+            $(".card-header").click(function() {
+                // self clicking close
+                if ($(this).next(".card-body").hasClass("active")) {
+                    $(this).next(".card-body").removeClass("active").slideUp()
+                    $(this).children("span").removeClass("fa-minus").addClass("fa-plus")
+                } else {
+                    $(".card .card-body").removeClass("active").slideUp()
+                    $(".card .card-header span").removeClass("fa-minus").addClass("fa-plus");
+                    $(this).next(".card-body").addClass("active").slideDown()
+                    $(this).children("span").removeClass("fa-plus").addClass("fa-minus")
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
